@@ -1,0 +1,210 @@
+```html
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ถึงเธอ ❤️</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #ffd6e7, #fff0f6);
+        overflow: hidden;
+    }
+
+    .box {
+        width: 380px;
+        padding: 40px;
+        text-align: center;
+        background: white;
+        border-radius: 30px;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    }
+
+    h1 {
+        color: #ff4f81;
+        margin-bottom: 20px;
+    }
+
+    p {
+        font-size: 19px;
+        line-height: 1.7;
+    }
+
+    button {
+        border: none;
+        padding: 13px 25px;
+        margin: 10px;
+        border-radius: 25px;
+        font-size: 17px;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    #nextBtn,
+    #yesBtn {
+        background: #ff5c8a;
+        color: white;
+    }
+
+    #noBtn {
+        background: #ddd;
+        color: #333;
+        position: relative;
+    }
+
+    button:hover {
+        transform: scale(1.08);
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    #final {
+        color: #ff4f81;
+        font-weight: bold;
+        font-size: 21px;
+    }
+
+    .heart {
+        position: fixed;
+        bottom: -30px;
+        font-size: 25px;
+        animation: fly 3s linear forwards;
+        pointer-events: none;
+    }
+
+    @keyframes fly {
+        to {
+            transform: translateY(-100vh) rotate(360deg);
+            opacity: 0;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+    <!-- หน้าแรก -->
+    <div id="page1">
+        <h1>เรามีอะไรจะบอก... 🥺</h1>
+        <p>มีเรื่องอยากบอกเธอจริง ๆ</p>
+
+        <button id="nextBtn" onclick="nextPage()">
+            กดตรงนี้ ❤️
+        </button>
+    </div>
+
+
+    <!-- หน้าคืนดี -->
+    <div id="page2" class="hidden">
+
+        <h1>คืนดีกันมั้ย? 🥺❤️</h1>
+
+        <p>
+            เค้าขอโทษนะ<br>
+            เค้าไม่อยากทะเลาะกับเธอเลย
+        </p>
+
+        <button id="yesBtn" onclick="yes()">
+            ได้ ❤️
+        </button>
+
+        <button id="noBtn" onmouseover="runAway()">
+            ไม่เอา 😤
+        </button>
+
+    </div>
+
+
+    <!-- หน้าสุดท้าย -->
+    <div id="page3" class="hidden">
+
+        <h1>เย้! ❤️</h1>
+
+        <p id="final">
+            คืนดีกันแล้วนะ 🥺❤️
+        </p>
+
+        <p>
+            รักเธอนะ<br>
+            จะพยายามไม่ทำให้เธอเสียใจอีก
+        </p>
+
+    </div>
+
+</div>
+
+
+<script>
+
+function nextPage() {
+
+    document.getElementById("page1").classList.add("hidden");
+    document.getElementById("page2").classList.remove("hidden");
+
+}
+
+
+// ปุ่ม "ไม่เอา" หนี
+function runAway() {
+
+    const button = document.getElementById("noBtn");
+
+    const x = Math.random() * 250 - 125;
+    const y = Math.random() * 150 - 75;
+
+    button.style.transform =
+        `translate(${x}px, ${y}px)`;
+
+}
+
+
+// กดได้
+function yes() {
+
+    document.getElementById("page2").classList.add("hidden");
+    document.getElementById("page3").classList.remove("hidden");
+
+    // หัวใจลอย
+    for (let i = 0; i < 30; i++) {
+
+        let heart = document.createElement("div");
+
+        heart.className = "heart";
+        heart.innerHTML = "❤️";
+
+        heart.style.left =
+            Math.random() * 100 + "vw";
+
+        heart.style.animationDelay =
+            Math.random() * 1.5 + "s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 4000);
+    }
+
+}
+
+</script>
+
+</body>
+</html>
+```
